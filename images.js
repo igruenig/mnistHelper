@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const images = [];
+const maxCount = 100;
 
 fs.open("./train-images-idx3-ubyte", 'r', (err, fd) => {
   if (err) {
@@ -26,7 +27,7 @@ fs.open("./train-images-idx3-ubyte", 'r', (err, fd) => {
   const size = rows * cols;
   buffer = Buffer.alloc(size);
 
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < maxCount; i++) {
     const image = [];
 
     fs.readSync(fd, buffer, 0, size, 16 + i * size);

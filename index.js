@@ -1,9 +1,11 @@
 const fs = require('fs');
+var path = require('path');
 
 const imageSize = 28 * 28;
 
 const getImage = (index) => {
-  const fd = fs.openSync('./train-images-idx3-ubyte', 'r');
+  const trainingImagesPath = path.join(__dirname, 'train-images-idx3-ubyte');
+  const fd = fs.openSync(trainingImagesPath, 'r');
   const buffer = Buffer.alloc(imageSize);
   const offset = 16 + index * imageSize;
   fs.readSync(fd, buffer, 0, imageSize, offset);
@@ -17,7 +19,8 @@ const getImage = (index) => {
 }
 
 const getLabel = (index) => {
-  const fd = fs.openSync('./train-labels-idx1-ubyte', 'r');
+  const trainingLabelsPath = path.join(__dirname, 'train-labels-idx1-ubyte');
+  const fd = fs.openSync(trainingLabelsPath, 'r');
   const buffer = Buffer.alloc(1);
   const offset = 8 + index;
   fs.readSync(fd, buffer, 0, 1, offset);
@@ -27,3 +30,6 @@ const getLabel = (index) => {
 
 exports.getImage = getImage;
 exports.getLabel = getLabel;
+
+console.log(getImage(0));
+console.log(getLabel(0));

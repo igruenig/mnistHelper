@@ -30,6 +30,3 @@ const getLabel = (index) => {
 
 exports.getImage = getImage;
 exports.getLabel = getLabel;
-
-console.log(getImage(0));
-console.log(getLabel(0));

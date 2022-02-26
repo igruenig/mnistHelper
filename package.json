@@ -1,6 +1,6 @@
 {
   "name": "mnist-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MNIST database helper to read images and labels.",
   "main": "index.js",
   "scripts": {

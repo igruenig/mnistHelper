@@ -9,6 +9,7 @@ const getImage = (index) => {
   const buffer = Buffer.alloc(imageSize);
   const offset = 16 + index * imageSize;
   fs.readSync(fd, buffer, 0, imageSize, offset);
+  fs.closeSync(fd);
 
   const image = [];
   for (var i = 0; i < imageSize; i++) {
@@ -24,6 +25,7 @@ const getLabel = (index) => {
   const buffer = Buffer.alloc(1);
   const offset = 8 + index;
   fs.readSync(fd, buffer, 0, 1, offset);
+  fs.closeSync(fd);
 
   return buffer.readUInt8(0);
 }
